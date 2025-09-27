@@ -1,0 +1,319 @@
+LINUX PROGRAMMING
+ASSIGNMENT 2
+NAME: Anushya CM  
+     CLASS: 3-C(CSE-CY)
+ROLL NO: 46              
+USN: ENG24CY0084 
+
+(Q1) What does the command pwd, whoami, and hostname display?
+                 
+  pwd (Print Working Directory)
+    • Shows the full path of your current location in the file system 
+    • Tells you exactly where you are in the directory tree 
+ whoami (Who Am I)
+    • Displays the username of the currently logged-in user 
+    • Shows your effective user identity 
+ hostname (Host Name)
+    • Shows the name assigned to the computer/server 
+    • Identifies the machine on the network 
+
+CODE:
+bash
+$ pwd
+/home/Anushya/projects/website
+
+$ whoami  
+Anushya
+
+$ hostname
+ubuntu-server
+
+(Q2) Write the command to create a directory named “project” inside the/home/student folder and keep three .txt file into it. Give output snapshot. 
+
+
+
+
+
+
+
+
+
+
+
+(Q3) Explain the difference between absolute path and relative path with proper examples.
+Basic Comparison
+Aspect
+Absolute Path
+Relative Path
+Definition
+Complete path from root directory
+Path from current working directory
+Starting Point
+Always starts from root (/ or C:\)
+Starts from current location
+Independence
+Works from anywhere in filesystem
+Depends on current directory
+Length
+Usually longer
+Usually shorter
+Ambiguity
+Never ambiguous
+Can be ambiguous without context
+
+Feature
+Absolute Path
+Relative Path
+Unix/Linux Start
+/ (forward slash)
+No leading /
+Windows Start
+C:\, D:\ (drive letter)
+No drive letter
+Special Symbols
+None needed
+Uses . (current) and .. (parent)
+Portability
+Less portable between systems
+More portable within projects
+Performance
+Slightly faster (no resolution needed)
+Requires path resolution
+Advantages & Disadvantages
+Path Type
+Advantages
+Disadvantages
+Absolute
+• Always works
+• No ambiguity
+• System-independent execution
+• Faster resolution
+• Longer to type
+• Less portable
+• Harder to relocate projects
+Relative
+• Shorter paths
+• More portable
+• Easier project relocation
+• Context-aware
+• Location dependent
+• Can be confusing
+• May break if directory changes
+
+Examples:
+(Absolute path)
+Bash
+cd /home/user/documents
+cp /home/user/documents/report.txt /var/backup/
+ls /home/user/pictures/
+(Relative path)
+
+bash
+cd documents                 
+cp documents/report.txt ../backup/ 
+ls pictures/               
+
+cd ../../var/log           
+
+(Q4) What command will give you the already executed command traces in the terminal. Give output snapshot
+           
+     > history command will give you the already executed common traces in the terminal.
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+(Q5) Compare the working functionality of find and locate command. Which one is faster and why? 
+
+Aspect
+find
+locate
+Working Method
+Real-time filesystem traversal
+Pre-built database search
+Speed
+Slower 
+Much faster 
+Database Dependency
+No database required
+Requires updatedb database
+Real-time Results
+Yes 
+No 
+Recently Created Files
+Finds immediately
+Misses until next updatedb run
+Search Criteria
+Extensive (name, size, type, permissions, date, etc.)
+Limited (primarily filename/path)
+System Resources
+Higher CPU/disk usage
+Minimal resource usage
+Flexibility
+Very flexible with many options
+Limited flexibility
+Actions on Results
+Can execute commands on found files
+Cannot execute actions directly
+Database Updates
+N/A
+Daily via cron 
+Typical Use Cases
+Complex searches, recent files, file operations
+Quick filename searches, system-wide scans
+Performance on Large Systems
+Degrades significantly
+Consistent fast performance
+Accuracy
+100% current
+Depends on database freshness
+Installation
+Usually pre-installed
+May need mlocate/plocate package
+Example Speed
+Minutes for full system scan
+Seconds for any search
+Best For
+Precise, criteria-based searches
+Fast filename lookups
+
+Locate is faster because locate maintains sub-second search times even on systems with millions of files, while find can take minutes or hours for the same search due to real-time file system traversal overhead. The speed difference exists because locate does the heavy work upfront and then provides instant look ups, while find does all the work at search time when you're waiting for results.
+
+(Q6)Which command is used to modify file permissions in Linux? Give an example.
+The chmod (change mode) command is used to modify file permissions in Linux.
+Syntax:
+chmod [options] permissions file/directory
+Example:
+# Give full permissions (rwx) to owner, read+execute to group and others 
+chmod 755 file.txt 
+# Give read+write to owner, read-only to group and others 
+chmod 644 document.txt 
+# Give full permissions to everyone
+ chmod 777 script.sh
+ # Give read+write+execute to owner only 
+chmod 700 private_file.txt 
+# Remove all permissions for group and others 
+chmod 600 secret.txt
+(Q7) A file has permissions -rw -r- -r- -. What does this mean? 
+        CHARACTERS
+          MEANING
+               -
+File type: Regular file (not directory, link, etc.)
+              rw-
+Owner permissions: Read + Write + No Execute
+              r--
+Group permissions: Read + No Write + No Execute
+              r--
+Others permissions: Read + No Write + No Execute
+
+(Q8) Explain the difference between chown and chgrp with an example.
+
+Aspect
+chown
+chgrp
+Full Name
+Change Owner
+Change Group
+Primary Purpose
+Change user and/or group ownership
+Change group ownership only
+Scope
+User owner, Group owner, or Both
+Group owner only
+Flexibility
+High (multiple options)
+Limited (single purpose)
+Complexity
+More complex syntax options
+Simple, straightforward
+
+Function
+chown Syntax
+chgrp Syntax
+Change user only
+chown user file
+Not possible
+Change group only
+chown :group file
+chgrp group file
+Change both
+chown user:group file
+ Not possible
+User + default group
+chown user: file
+Not possible
+Recursive
+chown -R user:group dir/
+chgrp -R group dir/
+
+(Q9) A file needs to be accessible by multiple users but only writable by the owner. How will you set permissions?
+To make a file accessible by multiple users but only writable by the owner, you need to set permissions that give:
+    • Owner: Read + Write permissions 
+    • Group/Others: Read-only permissions 
+
+Code:
+
+bash
+# Set exact permissions
+chmod u=rw,g=r,o=r filename.txt
+
+# Or use 'a' for all (group + others)
+chmod u=rw,a=r filename.txt
+
+# Step by step approach
+chmod u+rw filename.txt    # Give owner read+write
+chmod go+r filename.txt    # Give group and others read
+chmod go-wx filename.txt   # Remove write and execute for group/others
+This is how you set permissions for the user and owner.
+(Q10)  How do you check the manual page for any Linux commands?
+Syntax:
+bash
+man [options] command_name
+Code:
+bash
+# View manual for ls command
+man ls
+# View manual for chmod command
+man chmod
+
+# View manual for grep command
+man grep
+
+# View manual for man command itself
+man man
+Every manual page typically contains:
+    • NAME - Command name and brief description 
+    • SYNOPSIS - Command syntax 
+    • DESCRIPTION - Detailed explanation 
+    • OPTIONS - Available command options 
+    • EXAMPLES - Usage examples 
+    • FILES - Related files 
+    • SEE ALSO - Related commands 
+    • AUTHOR - Who wrote the command
+
+
+
+
