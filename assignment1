@@ -1,1 +1,277 @@
 # linux-assignment1
+LINUX PROGRAMMING
+ASSIGNMENT 1
+NAME: Anushya CM  
+     CLASS: 3-C(CSE-CY)
+ROLL NO: 46              
+USN: ENG24CY0084 
+
+         (Q1) What is Linux Operating System (OS)? List three pros and cons of it.
+                         Linux is an open-source operating system developed by Linus Torvalds in 1991. It forms the core of many different operating system distributions like Ubuntu, CentOS, Debian, and Red Hat that are collectively referred to as "Linux systems."
+         Linux is based on Unix principles and is known for its stability, security, and flexibility. It powers everything from smartphones (Android is Linux-based) to supercomputers, web servers, and desktop computers.
+Three Pros of Linux:
+    1. Free and Open Source - Linux distributions are typically free to download, use, and modify. You have access to the source code, which means no licensing fees and the ability to customize the system to your specific needs. 
+    2. Good Security and Stability - Linux has robust security architecture with strong permission systems, and it's less targeted by malware compared to other operating systems. It's also extremely stable, with many servers running for years without needing a reboot. 
+    3. Excellent Performance and Resource Efficiency - Linux generally uses system resources more efficiently than other operating systems, making it ideal for older hardware or resource-constrained environments. It can be down to run on minimal hardware or scaled up for high-performance computing. 
+Three Cons of Linux:
+    1. Steep Learning Curve - Linux can be challenging for users accustomed to Windows or macOS. Many tasks require command-line knowledge, and the different distributions can have varying interfaces and procedures. 
+    2. Limited Commercial Software Support - Many popular commercial applications (like Adobe Creative Suite, certain games, or specialized professional software) aren't natively available for Linux, though alternatives often exist. 
+    3. Hardware Compatibility Issues - While hardware support has greatly improved, you may still encounter problems with newer hardware, proprietary drivers or specialized peripherals that manufacturers primarily design for Windows or macOS. 
+       
+          (Q2)  Differentiate between Linux, Mac, Android, and Windows OS with at least six unique features.
+
+Feature
+Linux
+macOS
+Android
+Windows
+Licensing & Cost
+Free and open-source,
+No licensing fees
+Proprietary,
+Free with Apple hardware
+Open-source core,
+Free for manufacturers
+Proprietary,
+Paid licensing required
+Hardware Compatibility
+Universal compatibility with any manufacturer
+Apple hardware only(M-series and Intel Macs)
+Mobile devices(ARM processors)
+Broad hardware support(Multiple manufacturers)
+User Interface
+Multiple desktop options and Highly customizable
+Unified design,Dock and menu bar
+Touch-first interface
+Home screens
+Traditional desktop with Start menu and taskbar
+Software Distribution
+Package managers and Multiple repositories
+Mac App Store and Direct downloads
+Google Play Store and APK sideloading
+Microsoft Store and Traditional installers
+Security Architecture
+Permission-based and Less malware targeting
+Gatekeeper and sandboxing and Code signing required
+App sandboxing and Granular permissions
+Windows Defender and User Account Control
+Target Use Cases
+Servers and development,
+Embedded systems
+Creative professional, Apple ecosystem
+Mobile computing,Smartphones/tablets
+Business and gaming,General
+ consumer use
+
+
+
+(Q3) Why is Linux preferred for Mainframe Servers for legacy application? Give three
+out-of-the-box technical reasons? 
+
+             Three key technical reasons why Linux is preferred for mainframe servers running legacy applications:
+        1. POSIX Compliance and Unix-Like Architecture
+Linux follows POSIX (Portable Operating System Interface) standards, which makes it highly compatible with legacy Unix-based applications that were originally designed for mainframe environments.  Linux's Unix-like kernel architecture, system calls, and command-line interface provide a natural migration path without requiring extensive application rewrites or recompilation.
+       2. Robust Memory Management and Process Isolation
+Linux provides robust memory management with virtual memory systems that can handle the massive memory requirements typical of mainframe legacy applications. Its process isolation mechanisms ensure that critical legacy applications run in protected memory spaces, preventing one application failure from affecting others. 
+      3. Extensive Hardware Abstraction and Driver Support
+Linux offers excellent hardware abstraction layers that can interface with both modern and legacy mainframe hardware components. It supports a wide range of storage systems, network interfaces, and specialized mainframe hardware through its modular kernel design.  Linux handles the hardware compatibility at the OS level.
+These technical advantages make Linux an ideal bridge between legacy application requirements and modern mainframe hardware capabilities, providing the stability and compatibility that mission-critical legacy systems demand.
+(Q4) Explain the structure of the Linux File System with proper diagram. 
+           
+             The Linux file system is organized as an inverted tree structure that starts from a single root directory (/) and branches out into subdirectories ,unlike Windows (which has C:, D: drives).
+           
+           System Boot & Core (/boot, /bin, /sbin, /lib)
+
+    • Purpose: Files needed to start and run the system 
+    • Access: Root required for modifications 
+    • Example: When you turn on your computer, files from /boot load the kernel
+      Configuration (/etc)
+    • Purpose: System-wide settings and configuration files 
+    • Format: Usually plain text files 
+    • Example: /etc/passwd contains user account information 
+      User Space (/home, /root)
+    • Purpose: Personal directories for users 
+    • Permissions: Each user owns their home directory 
+    • Example: /home/john/Documents is John's document folder
+      Hardware Interface (/dev, /sys, /proc)
+    • Purpose: Interface with hardware and kernel 
+    • Special: These are virtual files (not stored on disk) 
+    • Example: /dev/sda1 represents your first hard drive partition
+      Programs & Libraries (/usr, /opt)
+    • Purpose: User applications and supporting libraries 
+    • Structure: /usr mirrors root structure (/usr/bin, /usr/lib, etc.) 
+    • Example: Your text editor is likely in /usr/bin/ 
+      Variable Data (/var, /tmp)
+    • Purpose: Files that change frequently 
+    • Examples: Log files, temporary files, mail storage 
+    • Cleanup: /tmp is often cleared on reboot
+       DIAGRAM:
+                                 ROOT DIRECTORY (Starting point)
+├── bin/                   Essential user commands (ls, cat, cp)
+├── boot/                  Boot files (kernel, bootloader)
+├── dev/                   Device files (sda1, tty, null)
+├── etc/                   System configuration files
+├── home/                  User home directories
+│   ├── alice/
+│   └── bob/
+├── lib/                    Essential system libraries
+├── media/                 Removable media mount points
+├── opt/                   Optional third-party software
+├── proc/                  Process & kernel info (virtual)
+├── root/                  Root user's home directory
+├── sbin/                  System administration commands
+├── tmp/                   Temporary files (cleared on reboot)
+├── usr/                   User programs and data
+│   ├── bin/              User commands (firefox, vim)
+│   ├── lib/              Program libraries
+│   └── local/            Locally installed software
+└── var/                   Variable data (logs, cache, mail)
+    ├── log/              System logs
+    └── www/              Web server file
+
+
+(Q5) If Linux OS is open-source, how do companies like Red Hat still making money from
+it? Do a market study and answer properly.
+
+                 The Open-Source Business Model
+Red Hat's Revenue Strategy
+Red Hat makes money by selling Linux support services. RHEL subscriptions are relatively expensive, on a par with Windows Server license feesThe company doesn't sell the software itself - they sell:
+    1. Enterprise Support & Maintenance 
+    2. Professional Services & Training 
+    3. Certification & Compliance 
+    4. Long-term Security Updates 
+    5. Integration Services 
+Value Proposition for Enterprises
+Large corporations and government agencies rely on vendor support for mission-critical software and are more than willing to pay for it. Companies need:
+    • 24/7 technical support 
+    • Guaranteed security patches 
+    • Compliance certification 
+    • Professional training 
+    • Risk mitigation 
+Market Size & Growth
+Linux Operating System Market
+The global Linux operating system market size was valued at $21.97 billion in 2024 & is projected to grow from $26.41 billion in 2025 to $99.69 billion by 2032
+Market Dominance Statistics
+Linux is used by 47% of professional developers worldwide. It has a 2.09% market share as a desktop OS. Expected to reach a global market value of USD 17,506.92 million by 2028. Dominates with 96.3% of the top one million web servers. Powers 91.5% of the world's top 500 supercomputers
+Company Revenue Examples
+Red Hat (Now IBM)
+    • The first company to successfully commercialize open source software at scale, Red Hat managed to make a billion-dollar business out of selling vetted open source updates and providing multi-product support, services, and training 
+
+ Canonical (Ubuntu)
+Canonical generated nearly $300 million in revenue for the fiscal year 2024, a dramatic leap from the $81 million it recorded a decade ago in 2014 . This represents 270% growth over 10 years.
+How the Business Model Works
+Partner Revenue Multiplication
+For every US$1.00 in Red Hat Enterprise Linux subscription revenues, partners can make an additional US$3.50 by providing value added services . This creates an entire ecosystem of profitable businesses around Linux.
+Economic Impact
+The workloads running on Red Hat Enterprise Linux are expected to "touch" more than $10 trillion worth of global business revenues in 2019 - powering roughly 5% of the worldwide economy.
+(Q6) Write the command to display today’s date and time
+     The basic  date command displays the current system date and time in the default format for your locale.
+Code:
+bash
+# Custom format
+date "+%Y-%m-%d %H:%M:%S"
+# Output: 2025-09-21 14:30:25
+
+# Just date
+date "+%Y-%m-%d"
+# Output: 2025-09-21
+
+# Just time
+date "+%H:%M:%S"
+# Output: 14:30:25
+(Q7) Which command is used to check how long the system has been running? 
+             The  uptime command shows how long the system has been running since the last boot/restart.
+Example Code:
+ bash
+# More detailed uptime info
+cat /proc/uptime
+
+# Human-readable uptime only
+uptime -p
+# Output: up 5 days, 3 hours, 42 minutes
+
+# Since when system is running
+uptime -s
+# Output: 2025-09-16 10:48:25
+(Q8) What is the difference between shutdown -h now and halt? 
+ 
+        FEATURES
+             Shutdown -h
+              halt
+  SHUTDOWN TYPE
+ Graceful Shutdown
+ Immediate Halt
+ PROCESS HANDLING
+Sends SIGTERM, waits for cleanup
+Abruptly terminates processes
+ MODERN ALTERNATIVE
+poweroff
+systemctl halt
+TIME TO EXECUTE
+Few seconds (graceful)
+Immediate
+DATA SAFETY
+Safe - prevents data loss
+Risk of data loss
+BOOT RECOVERY
+Clean next boot
+May need fsck on next boot
+
+(Q9) Compare init 0 and shutdown -h. Which is safer? Why?
+   FEATURES
+              init  0
+         shutdown -h
+SAFETY LEVEL
+                 safe 
+                safest
+SERVICE HANDLING
+Stops services via runlevel
+Stops services systematically
+TIME BUFFER
+Immediate execution
+Can set delay (shutdown -h +5)
+PROCESS CLEANUP
+Standard init process
+Enhanced cleanup process
+LOG ENTRIES
+Basic shutdown logs
+Detailed shutdown logs
+NETWORK SERVICES
+Standard service stop
+Graceful network shutdown
+MULTI-USER SAFETY
+Less consideration for users
+Designed for multi-user systems
+USER NOTIFICATION
+❌ No warning to users
+✅ Warns logged-in users
+
+        shutdown -h is safer overall because it prioritizes user experience and data protection in multi-user environments. Warns all logged-in users before shutdown and allows time delay for users to save work. Better logging of shutdown reasons and handles network connections more gracefully.
+
+(Q10)  A system administrator accidentally powers off a Server machine without shutting it down properly. What problems can occur to the said Server?
+    
+  File System Corruption
+    • Incomplete file writes - Files being saved become corrupted or lost 
+    • File system inconsistencies - File allocation tables and metadata become damaged 
+    • Lost data - Recent file changes stored in memory buffers are permanently lost 
+Database Corruption
+    • Incomplete transactions - Database transactions in progress left in inconsistent state 
+    • Corrupted indexes - Database indexes become damaged, causing query failures 
+    • Data inconsistency - Related data across tables becomes mismatched 
+Hardware Damage
+    • Hard drive damage - Read/write heads may not park properly, causing disk damage 
+    • Power supply stress - Sudden shutdown can damage power components 
+System Boot Problems
+    • Boot failures - System may fail to start due to corrupted system files 
+    • Long boot times - Forced file system check (fsck) can take hours 
+    • Service startup failures - Critical services may fail to start properly 
+Data Loss
+    • Recent modifications lost - Any unsaved changes in memory are permanently lost 
+    • Log file corruption - System and application logs become incomplete 
+    • User session data lost - Active user work and sessions are terminated abruptly 
+Recovery Impact
+    • Extended downtime - File system repair and service recovery takes significant time 
+    • Potential data restoration - May require restoring from backups 
+    • Manual reconfiguration - Services may need manual setup to work properly 
+
+
