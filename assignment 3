@@ -1,0 +1,330 @@
+LINUX PROGRAMMING
+ASSIGNMENT 3
+NAME: Anushya CM  
+     CLASS: 3-C(CSE-CY)
+ROLL NO: 46              
+USN: ENG24CY0084 
+
+(Q1) Distinguish between man and whatis commands? Justify with proper example
+           
+Aspect
+man Command
+whatis Command
+Purpose
+Display complete manual pages
+Display brief one-line descriptions
+Output Length
+Multiple pages of detailed documentation
+Single line summary
+Information Provided
+Complete syntax, options, examples, descriptions
+Just the NAME section from manual
+Sections Shown
+NAME, SYNOPSIS, DESCRIPTION, OPTIONS, EXAMPLES, FILES, SEE ALSO, etc.
+Only NAME section
+Usage Time
+Takes longer to read and understand
+Quick reference, seconds to read
+Best For
+Learning complete usage of commands
+Quick reminders of command purpose
+Equivalent Command
+man command_name
+man -f command_name
+Navigation
+Requires scrolling/paging through content
+No navigation needed
+Detail Level
+Comprehensive and thorough
+Brief and concise
+Example Outputs
+Command
+man ls Output
+whatis ls Output
+ls
+Shows complete manual with:• NAME section
+• SYNOPSIS with full syntax
+• DESCRIPTION (multiple paragraphs)
+• All OPTIONS (-a, -l, -h, etc.)
+• EXAMPLES
+• SEE ALSO references
+• Multiple pages of content
+ls (1) - list directory contents
+grep
+Shows complete manual with:
+• Pattern matching syntax
+• All options (-i, -v, -r, etc.)
+• Regular expression details
+• Usage examples
+• File processing options
+grep (1) - print lines matching a pattern
+
+cp
+Shows complete manual with:
+• Copy syntax variations
+• All options (-r, -p, -u, etc.)
+• Backup options
+• Preservation settings 
+cp (1) - copy files or directories
+(Q2) Use the tee command to save the output of ls -l into a file while also displaying it. 
+                
+COMMAND:
+ls -l | tee filename.txt
+OUTPUT:
+$ ls -l | tee directory_listing.txt
+ total 32
+ -rw-r--r-- 1 anushyausers 1024 Sep 25 14:30 config.conf 
+-rw-r--r-- 1 anushya users 2048 Sep 25 13:45 data.csv
+ drwxr-xr-x 2 anushya users 4096 Sep 25 12:15 documents
+/ -rwxr-xr-x 1 anushya users 512 Sep 25 15:20 install.sh
+ -rw-r--r-- 1 anushya users 1536 Sep 25 11:30 readme.txt 
+drwxr-xr-x 3 anushya users 4096 Sep 25 10:45 src/
+(Q3) Explain with an example how the tee command can be used in logging.
+     1. Real-time Monitoring
+You can watch the process execute while simultaneously creating a permanent record. This is crucial for:
+    • Long-running operations (backups, installations) 
+    • Debugging issues as they occur 
+    • Monitoring system health 
+     2. Error Capture
+Using 2>&1 | tee captures both stdout and stderr, ensuring you don't miss error messages
+     3. Append vs Overwrite
+    • tee file.log - Overwrites existing log (new session) 
+    • tee -a file.log - Appends to existing log (continuous logging) 
+code:
+#!/bin/bash 
+# backup_script.sh 
+echo "Starting backup process at $(date)" 
+cp -r /home/user/documents /backup/ 2>&1 | tee -a /var/log/backup.log 
+echo "Backup completed at $(date)" 
+(Q4) List the steps involved in installing Ubuntu 25.04 LTS on Oracle VirtualBox.
+Part 1: Setting Up the Virtual Machine
+Step 1: Create New Virtual Machine
+    1. Open Oracle VirtualBox 
+    2. Click "New" button 
+    3. Enter VM details: 
+        ◦ Name: Ubuntu 25.04 
+        ◦ Type: Linux 
+        ◦ Version: Ubuntu (64-bit) 
+    4. Click "Next" 
+Step 2: Configure Memory (RAM)
+    1. Set memory size: 
+        ◦ Minimum: 2048 MB (2GB) 
+        ◦ Recommended: 4096 MB (4GB) or higher 
+    2. Click "Next" 
+Step 3: Create Virtual Hard Disk
+    1. Select "Create a virtual hard disk now" 
+    2. Click "Create" 
+    3. Choose hard disk file type: 
+        ◦ Select "VDI (VirtualBox Disk Image)" 
+    4. Click "Next" 
+    5. Storage allocation: 
+        ◦ Select "Dynamically allocated" (recommended) 
+    6. Click "Next" 
+    7. Set disk size: 
+        ◦ Minimum: 25 GB 
+        ◦ Recommended: 50 GB or more 
+    8. Click "Create" 
+Step 4: Configure VM Settings
+    1. Right-click on the new VM → "Settings" 
+    2. System tab: 
+        ◦ Processor: Allocate 2+ CPU cores 
+        ◦ Enable "Enable PAE/NX" 
+    3. Display tab: 
+        ◦ Video Memory: 128 MB 
+        ◦ Enable "3D Acceleration" 
+    4. Storage tab: 
+        ◦ Click on "Empty" CD icon 
+        ◦ Click disk icon → "Choose Virtual Optical Disk File" 
+        ◦ Select your Ubuntu 25.04 ISO file 
+    5. Network tab: 
+        ◦ Ensure "NAT" is selected (default) 
+    6. Click "OK" 
+Part 2: Installing Ubuntu 25.04
+Step 5: Start the Virtual Machine
+    1. Select your Ubuntu VM 
+    2. Click "Start" 
+    3. The VM will boot from the ISO file 
+Step 6: Ubuntu Boot Menu
+    1. Select "Try or Install Ubuntu" 
+    2. Wait for Ubuntu to load (may take a few minutes) 
+Step 7: Choose Installation Language
+    1. Select your preferred language (English recommended) 
+    2. Click "Continue" 
+Step 8: Keyboard Layout
+    1. Choose your keyboard layout 
+    2. Test typing to verify layout 
+    3. Click "Continue" 
+Step 9: Updates and Other Software
+    1. What apps would you like to install? 
+        ◦ Select "Normal installation" (recommended) 
+        ◦ Or "Minimal installation" for lighter setup 
+    2. Other options: 
+        ◦ Check "Download updates while installing Ubuntu" 
+        ◦  Check "Install third-party software" (for graphics, Wi-Fi, etc.) 
+    3. Click "Continue" 
+Step 10: Installation Type
+    1. Select "Erase disk and install Ubuntu" 
+        ◦ Don't worry - this only affects the virtual disk 
+    2. Click "Install Now" 
+    3. Confirm by clicking "Continue" on the popup 
+Step 11: Geographic Location
+    1. Select your location on the map or from dropdown 
+    2. This sets your timezone 
+    3. Click "Continue" 
+Step 12: User Account Setup
+    1. Your name: Enter your full name 
+    2. Your computer's name: Choose a hostname 
+    3. Pick a username: Create a username (lowercase) 
+    4. Choose a password: Enter a secure password 
+    5. Confirm password: Re-enter the password 
+    6. Login options: 
+        ◦ "Require my password to log in" (recommended) 
+        ◦ Or "Log in automatically" 
+    7. Click "Continue" 
+Step 13: Installation Process
+    1. Ubuntu will now install (15-30 minutes) 
+    2. You'll see a slideshow explaining Ubuntu features 
+    3. Wait for "Installation Complete" message 
+    4. Click "Restart Now" 
+Step 14: First Boot
+    1. The VM will restart 
+    2. Remove installation medium prompt: Press Enter 
+    3. Ubuntu will boot to login screen 
+    4. Enter your username and password 
+       sudo reboot
+(Q5) During Ubuntu OS installation, you face a Kernel Panic Error. How would you troubleshoot it? 
+     Step-by-Step Troubleshooting
+Step 1: Immediate Actions
+A. Reboot and Retry
+    1. Hard reboot the system (power button) 
+    2. Try again - sometimes it's a temporary glitch 
+    3. If panic occurs at same point, proceed to next steps 
+B. Record Error Details
+    1. Take photo of error message if possible 
+    2. Note the exact point where panic occurs: 
+        ◦ During boot loader? 
+        ◦ Loading kernel? 
+        ◦ Hardware detection? 
+        ◦ Mounting filesystems? 
+Step 2: Boot Options and Kernel Parameters
+A. Access GRUB Boot Menu
+    1. Boot from Ubuntu ISO 
+    2. Highlight "Try or Install Ubuntu" 
+    3. Press 'e' to edit boot parameters 
+    4. Find line starting with "linux" 
+B. Add Troubleshooting Parameters
+Add these parameters to the linux line (before "quiet splash"):
+ # Basic troubleshooting options
+acpi=off noapic nomodeset
+
+# Memory-related issues
+mem=4G memtest
+
+# Graphics-related issues
+nomodeset nouveau.modeset=0
+
+# Disable problematic features
+noapic nolapic nosmp
+
+# Debug options
+debug ignore_loglevel
+
+# Complete example line:
+linux /casper/vmlinuz file=/cdrom/preseed/ubuntu.seed boot=casper acpi=off nomodeset ---
+       
+(Q6) Write the command to display the system’s hostname? How to change hostname using sysctl command?
+ 
+# Method 1: Using hostname command (most common)
+hostname
+
+# Method 2: Display FQDN (Fully Qualified Domain Name)
+hostname -f
+
+# Method 3: Display all hostname information
+hostname -A
+
+# Method 4: Display domain name only
+hostname -d
+
+# Method 5: Display short hostname
+hostname -s
+
+# Method 6: Using system files
+cat /etc/hostname
+
+# Method 7: Using hostnamectl (systemd systems)
+hostnamectl
+
+# Method 8: Using uname command
+uname -n
+
+# Method 9: Using environment variable
+echo $HOSTNAME
+
+# ============================================
+# SAMPLE OUTPUTS
+# ============================================
+
+# Example hostname output:
+$ hostname
+ubuntu-server
+
+# Example hostnamectl output:
+$ hostnamectl
+   Static hostname: ubuntu-server
+         Icon name: computer-vm
+           Chassis: vm
+        Machine ID: a1b2c3d4e5f6789012345678901234567
+           Boot ID: 12345678-1234-5678-9012-123456789012
+    Virtualization: oracle
+  Operating System: Ubuntu 25.04
+            Kernel: Linux 6.8.0-45-generic
+      Architecture: x86-64
+
+# Example FQDN output:
+$ hostname -f
+ubuntu-server.example.com
+
+CHANGING THE HOSTNAME
+# Method 1: Using hostnamectl (Recommended for systemd systems)
+sudo hostnamectl set-hostname new-hostname
+
+# Method 2: Using hostname command (temporary - until reboot)
+sudo hostname new-hostname
+
+
+
+
+(Q7) Which command is used to show the calendar of the year 1984 with August month?
+     The command to show the calendar for August 1984 is:
+bash
+cal 8 1984
+      -cal - the calendar command 
+       -8 - represents August (8th month) 
+    -1984 - the year
+(Q8) Write a command to display system uptime and logged-in users together
+     The w command is the most comprehensive single command that shows both uptime and logged-in users:
+code:
+bash
+w
+output:
+16:45:23 up 2 days, 14:32,  3 users,  load average: 0.15, 0.12, 0.08
+USER     TTY      FROM             LOGIN@   IDLE   JCPU   PCPU WHAT
+john     pts/0    192.168.1.100    14:30    0.00s  0.12s  0.01s w
+alice    pts/1    192.168.1.101    15:20    5:00   0.05s  0.02s vim file.txt
+bob      tty7     :0               09:15    2:32m  1.45s  0.23s gnome-session
+(Q9) Use the find command to list all “.c” files in /home/user.
+Code:
+find /home/user -name "*.c"
+Output:
+/home/user/projects/hello.c
+/home/user/projects/calculator.c
+/home/user/src/main.c
+/home/user/src/utils.c
+/home/user/Desktop/test.c
+(Q10) How do you change file permissions to allow only the owner to read and write?
+Code:
+chmod 600 filename
+Output:
+$ ls -l myfile.txt
+-rw-r--r-- 1 user user 1234 Sep 27 16:30 myfile.txt
