@@ -1,0 +1,117 @@
+LINUX PROGRAMMING
+ASSIGNMENT 6
+NAME: Anushya CM  
+     CLASS: 3-C(CSE-CY)
+ROLL NO: 46              
+USN: ENG24CY0084 
+
+(Q1) Which command is used to list the contents of a directory? Justify with proper example. 
+   
+The ls command (short for list) is used to display the files and directories contained in the current or specified directory.
+SYNTAX:
+
+ls [options] [directory]
+
+OUTPUT:
+
+(Q2) Write the command to create a new directory named 123test_dir.         
+
+    • mkdir stands for make directory.
+    • 123test_dir is the name of the new directory to be created.
+    • If the directory is created successfully, there will be no output (unless an error occurs).
+                                                                                                         
+
+
+
+
+(Q3) What is the purpose of the sed command? Justify with proper example. 
+ 
+ The sed command (Stream Editor) is used for text manipulation in Linux. It can search, find and replace, insert, delete, or modify lines in a text file or input stream — without opening the file in an editor.
+
+EXAMPLE:
+
+                                                                       
+
+
+
+
+
+
+
+
+
+(Q4) Which distinct command is used to display one-line descriptions of any commands? 
+    The whatis command provides a short, one-line description of a Linux command, taken from the manual (man) pages.
+(Q5) Write the command to create an empty file named “notes.txt”.
+
+    • touch creates an empty file if it doesn't exist.
+    • If notes.txt already exists, touch updates its timestamp (modification time) without changing its content.
+(Q6) Differentiate between grep and awk commands with an example. 
+ 
+Feature
+grep
+awk
+Purpose
+Search for matching lines containing a pattern
+Pattern scanning and text processing with scripting capabilities
+Functionality
+Filters lines based on a simple pattern or regex
+Can search, extract, manipulate, and format data
+Complexity
+Simple and fast text search
+Powerful language for complex data processing
+Output
+Prints matching lines
+Can print selected fields, perform calculations, and format output
+Use Case
+Quickly find lines containing a keyword
+Process columns, perform arithmetic, generate reports
+Supports Programming
+No
+Yes (variables, loops, conditionals, functions)
+
+(Q7) Write the command to give read, write, and execute permission to the owner of a file script.sh.
+
+    • chmod — change file permissions.
+    • u — user (the owner of the file).
+    • +rwx — add read (r), write (w), and execute (x) permissions.
+    • script.sh — the file you want to modify.
+(Q8) How is chown different from chgrp? Give one example for each.
+
+Feature
+chown
+chgrp
+Purpose
+Changes the owner (user) of a file or directory
+Changes the group ownership of a file or directory
+Changes
+User who owns the file
+Group associated with the file
+Typical Use
+Transfer file ownership to another user
+Assign the file to a different group
+Requires
+Usually requires superuser (root) privileges
+Usually requires superuser privileges or membership in the group
+
+(Q9) A user complains that they cannot execute a file even though it exists in their directory. How would you troubleshoot this using ls -l, chmod, and whoami?
+ 
+
+Step
+Command
+Purpose
+Check permissions
+ls -l filename
+Verify if execute permission exists
+Check current user
+whoami
+Confirm who is running the command
+Modify permissions
+chmod u+x filename
+Add execute permission for owner
+
+
+
+
+
+(Q10) Design a command pipeline to: find all .log files modified in the last 2 days in /var/log, display them on screen, and save the results into a file recent_logs.txt using tee command.
