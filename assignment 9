@@ -1,0 +1,270 @@
+LINUX PROGRAMMING
+ASSIGNMENT 9
+NAME:ANUSHYA CM
+ROLL NO:46                  
+CLASS:3-C(CSE-CY)   
+USN:ENG24CY0084     
+
+(Q1) Write a shell script using if…else to check if a number is even or odd.  
+
+#!/bin/bash
+
+# Prompt the user to enter a number
+read -p "Enter a number: " number
+
+# Check if input is a valid integer
+if ! [[ "$number" =~ ^-?[0-9]+$ ]]; then
+    echo "Invalid input. Please enter an integer."
+    exit 1
+fi
+
+# Check if the number is even or odd
+if [ $((number % 2)) -eq 0 ]; then
+    echo "$number is even."
+else
+    echo "$number is odd."
+fi
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+(Q2)Explain the difference between if and case statements in bash.
+
+Feature
+if Statement
+case Statement
+Purpose
+To evaluate logical or arithmetic conditions
+To match a value or variable against patterns
+Best for
+Numeric comparisons, string tests, file checks
+Matching one variable against multiple fixed values
+Syntax
+More verbose, uses [ ] or [[ ]]
+More concise for multiple options
+Condition Type
+Supports complex expressions (-eq, -lt, ==)
+Pattern-based matching (wildcards, literals)
+Default Option
+else
+* (wildcard pattern for default case)
+Multiple Conditions
+Handled using elif blocks
+Handled using multiple pattern) entries
+Pattern Matching
+Not ideal
+Ideal (supports wildcards like *.txt, ?, etc.)
+Readability
+Can become complex with many conditions
+Cleaner for many discrete values
+Example Use Case
+Check if number is positive, negative, or zero
+Menu selection or handling command-line options
+
+(Q3) . Write a script to find the largest of three numbers entered by the user.
+#!/bin/bash
+
+# Prompt the user to enter three numbers
+read -p "Enter first number: " num1
+read -p "Enter second number: " num2
+read -p "Enter third number: " num3
+
+# Check if inputs are valid integers
+if ! [[ "$num1" =~ ^-?[0-9]+$ && "$num2" =~ ^-?[0-9]+$ && "$num3" =~ ^-?[0-9]+$ ]]; then
+    echo "Invalid input. Please enter integers only."
+    exit 1
+fi
+
+# Determine the largest number
+if [ "$num1" -ge "$num2" ] && [ "$num1" -ge "$num3" ]; then
+    largest=$num1
+elif [ "$num2" -ge "$num1" ] && [ "$num2" -ge "$num3" ]; then
+    largest=$num2
+else
+    largest=$num3
+fi
+
+# Display the result
+echo "The largest number is: $largest"
+
+
+ 
+
+
+
+
+
+
+
+
+
+(Q4) How do you use a for loop to traverse an array in bash? Give an example. The array is defined as arr=(123, “Abs”, -2.3, ‘A’, 23.56, 0). 
+ 
+#!/bin/bash
+
+# Define the array
+arr=(123 "Abs" -2.3 'A' 23.56 0)
+
+# Traverse the array using a for loop
+echo "Array elements are:"
+for element in "${arr[@]}"
+do
+    echo "$element"
+done
+ 
+(Q5) Write a shell script to loop through all files in the current directory and display their names. 
+
+#!/bin/bash
+
+# Loop through all files in the current directory
+for file in *; do
+    if [ -f "$file" ]; then
+        echo "File: $file"
+    fi
+done
+
+
+
+   
+
+
+
+
+
+  
+
+
+
+(Q6) What is the difference between while and until loops in bash?
+
+
+Feature
+while Loop
+until Loop
+Condition Check
+Continues while condition is true
+Continues until condition becomes true
+Loop Stops When
+The condition evaluates to false
+The condition evaluates to true
+Use Case
+When you want to loop as long as a condition holds
+When you want to loop until a condition is met
+Logic Type
+Pre-check loop (checks before executing)
+Same (checks before executing)
+Control Flow
+Starts only if the condition is initially true
+Starts even if the condition is initially false
+Example
+while [ $x -lt 5 ]
+until [ $x -ge 5 ]
+Common Use
+Polling, reading input, waiting for state
+Waiting for completion, retrying until success
+
+(Q7) Write a countdown timer script using a while loop
+
+#!/bin/bash
+
+# Prompt the user for countdown time in seconds
+read -p "Enter countdown time in seconds: " time
+
+# Check if input is a valid positive integer
+if ! [[ "$time" =~ ^[0-9]+$ ]]; then
+    echo "Invalid input. Please enter a positive integer."
+    exit 1
+fi
+
+# Countdown loop
+while [ $time -gt 0 ]; do
+    echo -ne "Time remaining: $time\033[0K\r"  # \r to overwrite line
+    sleep 1
+    ((time--))
+done
+
+echo "Time's up! "
+
+(Q8) How do you use break and continue statements in loops? Give examples.
+
+Break:
+    • Purpose: Immediately exits the loop.
+    • Use when: You want to stop the loop when a certain condition is met
+      code:
+      #!/bin/bash
+      for i in {1..5}; do
+          if [ $i -eq 3 ]; then
+            echo "Breaking at i = $i"
+              break
+         fi
+        echo "i = $i"
+      done
+continue:
+    • Purpose: Skips the rest of the current loop iteration and continues with the next iteration.
+    • Use when: You want to skip specific cases without exiting the loop.
+  code:
+#!/bin/bash
+
+for i in {1..5}; do
+    if [ $i -eq 3 ]; then
+        echo "Skipping i = $i"
+        continue
+    fi
+    echo "i = $i"
+done
+(Q9) Write a script to check if a file exists or not using the if and else loop.
+#!/bin/bash
+
+# Prompt the user to enter a file name
+read -p "Enter the file name to check: " filename
+
+# Check if the file exists
+if [ -e "$filename" ]; then
+    echo "The file '$filename' exists."
+else
+    echo "The file '$filename' does not exist."
+fi
+
+      
+
+
+ 
+
+
+
+(Q10) Write a script to calculate factorial of a number using for loop.
+
+#!/bin/bash
+
+# Prompt user for input
+read -p "Enter a non-negative integer: " num
+
+# Check if input is a non-negative integer
+if ! [[ "$num" =~ ^[0-9]+$ ]]; then
+    echo " Invalid input. Please enter a non-negative integer."
+    exit 1
+fi
+
+# Initialize factorial result
+factorial=1
+
+# Use for loop to calculate factorial
+for (( i=1; i<=num; i++ ))
+do
+    factorial=$((factorial * i))
+done
+
+# Display result
+echo " Factorial of $num is: $factorial"
+
+
