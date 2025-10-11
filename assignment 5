@@ -1,0 +1,160 @@
+LINUX PROGRAMMING
+ASSIGNMENT 5
+NAME: Anushya CM
+CLASS: 3-C(CSE-CY)
+ROLL NO: 46
+USN: ENG24CY0084
+(Q1) What is a shell in Linux OS? How many categories of shell is
+currently exists in Linux? Why bash shell is very popular in Linux
+distribution?
+A shell is a command-line interface program that acts as an intermediary between the
+user and the Linux kernel. It interprets and executes commands entered by users, manages process
+execution, and provides a programming environment through shell scripts.
+Categories of Shells in Linux
+Shells in Linux are primarily categorized into two main types:
+1. Bourne Shell Family
+These shells are descendants or compatible with the original Bourne Shell (sh):
+•
+•
+•
+•
+sh (Bourne Shell) - The original Unix shell
+bash (Bourne Again Shell) - Enhanced version of sh
+ksh (Korn Shell) - Combines features of sh and csh
+zsh (Z Shell) - Extended Bourne shell with many improvements
+2. C Shell Family
+These shells use C-like syntax:
+• csh (C Shell) - Uses C programming language-like syntax
+• tcsh (TENEX C Shell) - Enhanced version of csh
+Why Bash is Popular in Linux Distributions
+1. Default Shell Status - Bash is the default shell in most major Linux distributions (Ubuntu,
+Debian, Red Hat, Fedora, CentOS), making it the first shell users encounter.
+2. Backward Compatibility - It's fully compatible with the original Bourne Shell (sh), meaning
+older shell scripts run without modification.
+3. Feature-Rich - Bash includes powerful features like:
+•
+•
+•
+•
+•
+•
+Command-line editing
+Command history with search
+Tab completion
+Job control
+Aliases and functions
+Programmable completion
+4. Extensive Documentation - Decades of tutorials, books, and community support make learning
+and troubleshooting easier.5. Scripting Capabilities - Bash provides robust scripting features that make it excellent for
+automation, system administration tasks, and complex workflows.
+6. Free and Open Source - Part of the GNU Project, Bash is freely available and actively
+maintained.
+7. Standardization - Its widespread use means that bash scripts are portable across different Linux
+systems, making it a safe choice for system administrators and developers.
+8. Balance of Power and Usability - While powerful enough for advanced users, bash remains
+accessible to beginners, striking a good balance between functionality and ease of use.
+(Q2) What does the ls -Z command display?
+The ls -Z command displays the SELinux security context of files and directories.
+SELinux (Security-Enhanced Linux) is a security mechanism that provides mandatory access
+control (MAC). Each file, process, and resource in an SELinux-enabled system has a security
+context label that determines what actions are permitted.
+(Q3) Write a command to list all hidden files in the current directory.
+• ls -a - Shows all files including hidden ones (files starting with .), plus the . (current
+directory) and .. (parent directory) entries
+• ls -A - Shows almost all files including hidden ones, but excludes . And ..
+(Q4) Explain the difference between hard links and soft links (symbolic
+links) in Linux.
+Hard Links :
+•Same inode number as the original
+•No distinction between "original" and "link" – they're all equal references to the same
+data
+•Cannot cross filesystem boundaries (since inodes are filesystem-specific)
+•Cannot link to directories (on most filesystems, for security reasons)
+•File data persists as long as at least one hard link exists
+Soft Links (Symbolic Links) :
+•Different inode from the target file
+•Can cross filesystem boundaries
+•Can link to directories
+•Can point to non-existent files (becomes a "dangling" link)
+•Becomes broken if the target file is moved or deleted(Q5) A file has permissions -rwxr-x--x. Explain who can read, write, and
+execute it.
+Owner (user who owns the file) - rwx
+• Read: Can read/view the file contents
+• Write: Can modify/edit the file
+• Execute: Can run the file as a program/script
+Group (users in the file's group) - r-x
+• Read: Can read/view the file contents
+• Write: Cannot modify the file
+• Execute: Can run the file as a program/script
+Others (everyone else) - --x
+• Read: Cannot read/view the file contents
+• Write: Cannot modify the file
+• Execute: Can run the file as a program/script
+(Q6) Write the command to change the group ownership of a file data.txt
+to group staff.
+sudo chown :staff data.txt
+staff — this syntax tells chown to change only the group, leaving the user owner unchanged.
+•chown user:group file → changes both user and group
+•chown user file → changes only user
+•chown :group file → changes only group
+(Q7) Why is it dangerous to give 777 permissions to a file? Explain with an
+example.
+Giving 777 permissions (rwxrwxrwx) to a file is dangerous because it grants full read, write, and
+execute permissions to everyone—the owner, group members, and all other users on the system.
+This creates serious security and stability risks.
+•
+Anyone can modify the file → Data integrity is lost
+•Anyone can read sensitive content → Confidentiality is breached
+•Anyone can execute it as a program → Potential for malicious use
+•
+Malware or compromised accounts can tamper with it → System-wide risk
+EXAMPLE (file= passwords.txt)
+email: mypass123bank: secure456
+You accidentally run:
+chmod 777 passwords.txt
+Every user on the computer can now:
+• Read it → see all your passwords
+• Edit it → change or delete your passwords
+• Run it (if it were a script) → do harmful things
+(Q8) What is the difference between apropos (i.e., man -k) and whatis (i.e.,
+man -f)?
+apropos (man -k)
+Feature
+Function
+Searches for commands related to a keyword
+Search Type Keyword-based, partial matches allowed
+Search Scope Man page names and descriptions
+whatis (man -f)
+Displays brief description of
+an exact command
+Exact name match only
+Man page names only
+When you know the exact
+command name
+Use CaseWhen you don’t know the exact command nameExample
+Inputapropos copywhatis cp
+Example
+Outputcp (1) - copy files and
+directoriesbcopy (3) - copy byte
+sequencescp (1) - copy files
+and directories
+Wildcard
+SupportYes (supports regex or partial matches)No (only exact matches)
+OutputMultiple possible matchesFails ifNo matches found for the keyword
+Single-line description (if
+match found)
+Command not found exactly in
+man database
+(Q9) Write a command to redirect the error output of a command to a file
+named error.log.
+Command 2>> error.log
+•command — the command you are running.
+•2> — redirects file descriptor 2 (which is stderr) to a file.
+•error.log — the file where the error output will be saved (it will be created if it
+doesn’t exist, or overwritten if it does).
+(Q10) How can you use the tee command to append output to a file instead
+of overwriting it?To append output to a file using tee instead of overwriting it, use the -a (or --append) option:
+command | tee -a filename
+•command — the command whose output you want to capture
+•| tee -a filename — appends the standard output (stdout) of the command to
+filename, while also displaying it in the terminal.
