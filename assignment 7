@@ -1,0 +1,108 @@
+LINUX PROGRAMMING
+ASSIGNMENT 7
+NAME: Anushya CM  
+     CLASS: 3-C(CSE-CY)
+ROLL NO: 46              
+USN: ENG24CY0084 
+(Q1) What is a bash shell script? Give one example
+
+A Bash shell script is a text file containing a series of commands written in the Bash scripting language, which is executed by the Bash shell (the default command interpreter in many Linux systems). It automates tasks, runs commands sequentially, and can include programming constructs like loops, conditionals, and variables.
+
+
+                             
+
+
+
+
+
+
+
+
+(Q2) Write a simple shell script to print “Hello World”.
+
+
+
+
+
+
+
+(Q3) What is the purpose of comments (#) in a shell script?
+   
+          In a shell script, the # symbol is used to write comments — lines that are ignored by the shell when the script runs.In a shell script, the # symbol is used to write comments — lines that are ignored by the shell when the script runs.
+
+Purpose
+Explanation
+Documentation
+Explain what the script or a specific section does.
+Clarity
+Make the script easier to read and understand for yourself or others.
+ Debugging
+Temporarily disable a command without deleting it.
+Instructions
+Add notes, warnings, or usage info at the top of the script.
+
+(Q4) How do you declare variables (int, float, double, string, Boolean, and char) in a shell script?
+ 
+
+
+
+
+
+
+
+
+
+(Q5) Write a shell script to display the current date and time of the system. 
+     
+
+
+
+
+
+
+(Q6) Explain the difference between a constant and a variable in bash script. 
+
+Feature
+Variable
+Constant
+Definition
+A name used to store a changeable value
+A name used to store a fixed (unchangeable) value
+Value can change?
+ Yes
+ No (once set)
+How to declare
+name=value
+Use readonly or declare -r
+Usage
+Dynamic data that may vary in the script
+Fixed values like configuration, limits
+Example
+username="alice"
+readonly PI=3.14
+
+(Q7) Write a shell script to read two integer number from the user and compute the sum of both the number.
+ 
+
+
+
+
+
+
+
+
+
+(Q8)  What is the use of source command in shell scripting
+
+                 The source command is used to execute commands from a file in the current shell, rather than starting a new shell.
+  
+
+
+(Q9) How can you debug a shell script? Give two methods.
+         Debugging in shell scripting is essential when your script isn't working as expected. Bash provides several built-in ways to help you trace and diagnose problems.
+     Method 1: Use the -x option (Execution Trace)
+                This runs the script in debug/trace mode, printing each command and its arguments as they are executed.
+     Method 2: Use set -x and set +x for partial debugging
+                  Use this when you want to debug only a specific part of the script.
+(Q10) Write a bash script to create and delete a file.
+
