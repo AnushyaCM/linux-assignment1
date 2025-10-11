@@ -1,0 +1,180 @@
+LINUX PROGRAMMING
+ASSIGNMENT 8
+NAME: Anushya CM  
+     CLASS: 3-C(CSE-CY)
+ROLL NO: 46              
+USN: ENG24CY0084 
+(Q1)  What is a user-defined function in shell scripting? Explain with an example.
+             A user-defined function in shell scripting is a block of reusable code that performs a specific task. You define it once and can call it multiple times in your script — just like functions in other programming languages.
+       
+SYNTAX:
+
+function function_name {
+    # commands
+}
+
+(Q2)  Write a bash script with a function that multiply two integer numbers.
+#!/bin/bash
+# Script with a function to multiply two integers
+
+# Function to multiply two numbers
+multiply() {
+    local a=$1
+    local b=$2
+    local product=$((a * b))
+    echo "$product"
+}
+
+# Read two integers from the user
+read -p "Enter first integer: " num1
+read -p "Enter second integer: " num2
+
+# Call the multiply function and store result
+result=$(multiply "$num1" "$num2")
+
+# Display the result
+echo "Product of $num1 and $num2 is: $result"
+ 
+
+
+
+
+
+
+
+
+
+(Q3) Explain how arrays (1D, 2D, and 3D) are declared in bash scripting.  
+
+1D Arrays (One-Dimensional)
+ 
+# Declare and initialize a 1D array
+fruits=("apple" "banana" "cherry")
+
+# Or declare empty and assign later
+declare -a numbers
+numbers[0]=10
+numbers[1]=20
+echo "${fruits[1]}"  # Outputs: banana
+echo "${fruits[@]}"
+
+2D Arrays (Simulated)
+
+# Simulate a 2D array by combining indices as keys
+declare -A matrix  # Declare associative array (hash map)
+
+matrix["0,0"]=1
+matrix["0,1"]=2
+matrix["1,0"]=3
+matrix["1,1"]=4
+
+# Access element at row=1, col=0
+echo "${matrix["1,0"]}"  # Outputs: 3
+row1=(1 2)
+row2=(3 4)
+matrix=(row1[@] row2[@])
+
+# Access first row:
+echo "${!matrix[0]}"  
+
+3D Arrays (Simulated)
+declare -A tensor
+
+tensor["0,0,0"]=10
+tensor["0,0,1"]=20
+tensor["0,1,0"]=30
+tensor["1,0,0"]=40
+
+echo "${tensor["0,0,1"]}"  # Outputs: 20
+
+(Q4) Write a shell script to display elements of an array.
+#!/bin/bash
+# Script to display elements of an array
+
+# Declare an array
+my_array=("red" "green" "blue" "yellow")
+
+# Display all elements at once
+echo "All elements: ${my_array[@]}"
+
+# Display elements one by one with their index
+echo "Elements with their indices:"
+for i in "${!my_array[@]}"
+do
+  echo "Index $i: ${my_array[$i]}"
+done
+
+ 
+
+
+
+
+
+
+(Q5) What is the purpose of cron in Linux? 
+cron is a time-based job scheduler in Linux (and Unix-like systems) that allows users to automatically run scripts or commands at specified times or intervals without manual intervention.
+    • Automates repetitive tasks — like backups, updates, system monitoring, sending emails, etc.
+    • Runs commands periodically (every minute, hourly, daily, weekly, etc.).
+    • Uses crontab files to schedule jobs.
+    • Runs tasks in the background (daemon service).
+(Q6) Write a cron job to run a backup script every day at midnight. 
+ 
+(Q7)  How do you schedule a one-time job using at command?
+The at command is used to schedule a one-time task to be executed at a specific time in the future.
+SYNTAX:
+at TIME
+
+(Q8) Write a script to display disk usage using df and du. 
+#!/bin/bash
+# Script to display disk usage using df and du
+
+echo "==== Disk Usage Summary (df) ===="
+df -h
+
+echo ""
+echo "==== Disk Usage of Current Directory (du) ===="
+du -sh .
+
+   
+(Q9) How can you log the output of a script using the tee command?
+The tee command is used to display output on the screen and write it to a file at the same time.
+SYNTAX:
+your-command | tee logfile.txt
+This writes the output of your-command to logfile.txt and displays it on the screen.
+
+(Q10) Explain with an example how shell scripting can automate system
+administration tasks.
+
+Task
+Description
+Backups
+Automatically back up files or databases
+Log rotation
+Archive and clear old logs
+User management
+Create/delete users in bulk
+Monitoring
+Check disk usage, CPU load, or service status
+Software updates
+Automate apt/yum updates
+Scheduled jobs
+Run with cron at specific times
+
+EXAMPLE:
+
+#!/bin/bash
+# Script: disk_monitor.sh
+# Purpose: Monitor disk usage and send a warning if above threshold
+
+THRESHOLD=80
+
+# Get disk usage for root partition
+USAGE=$(df / | awk 'NR==2 {print $5}' | sed 's/%//')
+
+# Compare with threshold
+if [ "$USAGE" -ge "$THRESHOLD" ]; then
+    echo "WARNING: Disk usage is at ${USAGE}%!" | tee -a /var/log/disk_usage_alert.log
+    # Optionally send email or notify admin
+else
+    echo "Disk usage is normal: ${USAGE}%"
+fi
