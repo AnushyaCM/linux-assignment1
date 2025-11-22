@@ -1,0 +1,104 @@
+                              LINUX PROGRAMMING
+ASSIGNMENT 10
+NAME: Anushya CM  
+     CLASS: 3-C(CSE-CY)
+ROLL NO: 46 
+USN: ENG24CY0084
+
+COMMAND 1:SSH (SECURE SHELL CONNECTION)
+
+What is SSH?
+SSH stands for Secure Shell. It is used to establish a secure channel between a local and a remote computer, allowing encrypted remote login, execution of commands, and secure file transfer. SSH operates over TCP port 22 by default and supports multiple authentication methods including passwords and public key cryptography. It maintains data privacy and integrity through encryption algorithms such as AES and hashing algorithms like SHA-2.
+Why use SSH?
+SSH is essential for secure system administration and management because it protects communication across possibly insecure networks, such as the internet. It prevents attackers from intercepting sensitive data like passwords or commands. SSH also enables secure automated processes, secure file transfers (SCP, SFTP), secure tunneling (port forwarding), and access control and auditing for remote systems.
+How SSH works?
+SSH follows a three-layer model:
+    • The transport layer, which encrypts and decrypts data and authenticates the server.
+    • The user authentication layer, which verifies the client's identity.
+    • The connection layer, which manages multiple data channels like terminal sessions and file transfers.
+Users initiate a connection from an SSH client to an SSH server. After authenticating, a secured encrypted session is established, allowing the user to execute commands, transfer files, or create secure tunnels. SSH keys can automate and simplify access by enabling single sign-on without repeatedly typing passwords.
+
+Command Output Details
+Command output details in the context of SSH refer to the responses or results you receive on your local machine after executing a command on a remote server via an SSH session. When connected through SSH, you send commands to the remote system’s shell (such as bash, zsh, or others), and the output can include:
+    • Standard output (stdout): The main result or response of the command, such as text lines showing file listings, process status, or configuration details.
+    • Standard error (stderr): Any error messages or warnings produced by the command if something goes wrong or if there are permission or syntax issues.
+    • Exit status/code: A numeric code returned by the command after execution indicating success (usually 0) or type of failure (non-zero values).
+The output details may vary depending on the command run. For example:
+    • Running ls -l outputs a detailed listing of files and directories.
+    • Running cat /etc/passwd outputs the contents of the passwd file.
+    • Running a mis-typed command outputs an error message on stderr.
+In SSH sessions, the output is displayed in the terminal window of the client where the SSH session is active and can be redirected to files or piped to other commands for processing.
+Command option flags:
+    • -p [port]: Specifies the port number to connect to on the remote host (default is 22).
+    • -v: Enables verbose mode to show detailed debugging information for troubleshooting.
+    • -C: Enables compression to reduce data size during transmission.
+    • -X: Enables X11 forwarding to run graphical applications remotely.
+    • -Y: Enables trusted X11 forwarding with fewer restrictions (riskier).
+    • -i [identity_file]: Specifies a private key file for public key authentication.
+    • -4: Forces using IPv4 addresses only.
+    • -6: Forces using IPv6 addresses only.
+    • -A: Enables forwarding of the authentication agent connection.
+    • -o [option]: Allows specifying SSH options directly on the command line, overriding config file settings.
+    • -f: Requests SSH to go to background just before command execution (useful for port forwarding).
+    • -N: Do not execute remote commands; useful for port forwarding only.
+    • -L [local_port]:[remote_host]:[remote_port]: Specifies local port forwarding.
+    • -R [remote_port]:[local_host]:[local_port]: Specifies remote port forwarding.
+    • -D [local_port]: Specifies dynamic application-level port forwarding (SOCKS proxy).
+History of the Command:
+The SSH protocol and its commands have a notable history rooted in security needs. SSH was designed in 1995 by Finnish computer scientist Tatu Ylönen as a response to a password-sniffing attack on his university network. SSH was created to securely replace unencrypted remote login protocols like rlogin, Telnet, and FTP, which had serious security flaws. Initially released as SSH-1, it was adopted quickly due to its encrypted communication and authentication.
+Tatu Ylönen founded SSH Communications Security in late 1995 to support and commercialize the technology. By 1999, developers sought a free and open-source implementation, initiating the OSSH and then the more popular OpenSSH project, which started with a codebase from SSH 1.2.12. OpenSSH evolved rapidly and introduced support for SSH-2, a more secure and improved protocol version superior to SSH-1. SSH-2 added new cryptographic algorithms and addressed vulnerabilities in SSH-1, becoming the standard used today.
+SSH commands such as ssh and slogin emerged alongside this evolution, providing secure remote shell access and file transfer capabilities. These commands work by establishing an encrypted channel that protects data and authentication credentials. The SSH protocol's adoption grew steadily, becoming ubiquitous in secure server management and remote access, with OpenSSH being available on virtually all major operating systems.
+Thus, the history of SSH commands is closely tied to the development and improvement of the Secure Shell protocol from its inception in 1995 through open-source efforts and protocol advancements leading to broad global adoption in IT and networking infrastructures.
+
+COMMAND 2: Cmake (CROSS PLATFORM BUILD SYSTEM)
+
+What is CMake?
+CMake is a tool designed to manage and automate the build process for software projects. Instead of building software directly, it generates build scripts tailored to the target platform, compiler, and build system. This approach makes it easy to build complex projects across different operating systems and compilers without manually managing platform-specific build files.
+Why use CMake?
+CMake is used to simplify and unify building software across multiple platforms. It supports complex directory hierarchies and dependencies between libraries, helps manage large projects, and integrates with testing and packaging tools. CMake is widely adopted because it reduces the need for multiple hand-maintained build scripts and allows projects to be built consistently in different environments.
+How command CMake works?
+The main CMake command is run from the terminal or command line:
+    • cmake -S <source_dir> -B <build_dir>: Configures the project by reading CMakeLists.txt files in the source directory and generating platform-specific build files in a separate build directory.
+    • cmake --build <build_dir>: Builds the project using generated build files.
+    • CMakeLists.txt contains commands like project(), add_executable(), add_library(), target_link_libraries() to define project properties, targets, and dependencies.
+    • Developers write CMakeLists.txt scripts that specify how executables and libraries are built from source files.
+    • CMake supports specifying compiler options, dependencies, and custom build rules.
+    • Variants include running cmake with different generators, like Ninja or Visual Studio solutions, through the -G flag.
+
+Command Output Details:
+CMake command output details reflect the information displayed when running CMake during the configuration and build process. This output helps you understand what CMake is doing behind the scenes, including configuring the build system, checking dependencies, and generating native build files.
+Typical CMake Command Outputs
+    • Configure phase output: When you run cmake -S <source_dir> -B <build_dir>, CMake outputs messages about reading CMakeLists.txt, finding packages, checking compiler settings, and processing variables.
+    • Build phase output: Running cmake --build <build_dir> executes the native build tool (like make or Ninja) and shows compilation and linking progress with success or error messages.
+    • Verbose/debug output: You can get more detailed output using flags like:
+        ◦ --trace: Prints each line of CMake code executed during the configure phase.
+        ◦ --trace-expand: Similar, but expands variables in the output.
+        ◦ --debug-output: Shows extra information such as how CMake traverses files and processes commands.
+
+Command option flags:
+    • -S <path>: Specify the source directory containing CMakeLists.txt (configuring from this directory).
+    • -B <path>: Specify the build directory where CMake generates the build files.
+    • -G <generator-name>: Choose the build system generator, e.g., "Unix Makefiles", "Ninja", "Visual Studio 17 2022".
+    • -D <var>=<value>: Define or override a CMake variable, e.g., -DCMAKE_BUILD_TYPE=Release or -DCMAKE_C_FLAGS="-O2".
+    • --build <dir>: Build a project using native build system files in the specified directory.
+    • --target <target>: Build a specific target within a project.
+    • --clean-first: Clean the build files before building.
+    • -Wdev, -Werror=dev: Show or treat warnings as errors during configuration.
+    • --trace, --trace-expand: Provide detailed tracing output of CMake script execution.
+    • -L, -LAH: List cached variables and their values.
+    • -U <glob>: Remove cached entries matching a pattern.
+    • -C <initial-cache>: Preload a cache file.
+    • -P <script>: Process a CMake script without configuring a project.
+    • --debug-output, --debug-trycompile: Enable debug messages for configuration or try-compile tests.
+    • -j <jobs>: Parallelism when building (passed to underlying build tool).
+Compiler and linker flags are often set via variables like:
+    • -DCMAKE_C_FLAGS=... to set C compiler flags.
+    • -DCMAKE_CXX_FLAGS=... to set C++ compiler flags.
+    • -DCMAKE_EXE_LINKER_FLAGS=... for linker flags.
+History of the Command:
+The history of the CMake command and build system dates back to the late 1990s and early 2000s. CMake was initially created by Bill Hoffman at Kitware around 1999-2000 with funding from the United States National Library of Medicine. It was developed specifically to support building the Insight Segmentation and Registration Toolkit (ITK), a complex cross-platform C++ software project.
+Before CMake, projects often had separate build systems for Unix (using configure scripts and Makefiles) and Windows (using Visual Studio project files), making cross-platform development and maintenance tedious. CMake was designed to unify this by generating native build files from a single set of platform-independent configuration scripts, called CmakeLists.txt.
+Over time, CMake evolved with a target-centric model ("Modern CMake") from around 2013, improving how build rules and dependencies are managed seamlessly. It gained wide adoption across many open-source and commercial software projects as the standard cross-platform build system. Continuous integration and testing infrastructure helped maintain CMake’s stability across many platforms and compilers.
+CMake effectively outsources complex build logic to a single tool, allowing developers to focus on coding rather than intricate platform-specific build details. Its command-line tools reflect this evolution by providing flexible configuration, building, and debugging features for diverse development environments.
+In summary, the CMake command originated as part of a need for better cross-platform build automation over two decades ago and has matured into a widely adopted, sophisticated build system generator used globally in modern software development.
+
